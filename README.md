@@ -1,6 +1,6 @@
 # Concrete-Autoencoders
 
-An implementation of the ideas in "Concrete Autoencoders".
+An implementation of the ideas in https://arxiv.org/abs/1901.09346.
 
 There are 5 files.
 
