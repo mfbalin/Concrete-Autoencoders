@@ -641,7 +641,7 @@ def eval_on_dataset(name, train, test, feature_sizes, debug = False):
 def main():
     tf.logging.set_verbosity(tf.logging.INFO)
     
-    
+    '''
     for i in range(1):
         
         K = 50
@@ -655,7 +655,6 @@ def main():
         train, test = load_isolet()
         eval_on_dataset('%d_isolet_%d.json' % (i, K), train, test, [K], True)
     
-    '''
         train, test = load_fashion()
         eval_on_dataset('%d_fashion_%d.json' % (i, K), train, test, [K], True)
         
@@ -664,15 +663,17 @@ def main():
         
         train, test = load_activity()
         eval_on_dataset('%d_activity_%d.json' % (i, K), train, test, [K], True)
+    '''
     
-    
-    for i in range(1):
+    for i in range(11, 14):
 
-        train, test = load_fashion()
-        eval_on_dataset('%d_fashion.json' % i, train, test, [10, 25, 40, 55, 70, 85], True)
+        #train, test = load_fashion()
+        #eval_on_dataset('%d_fashion.json' % i, train, test, [10, 25, 40, 55, 70, 85], True)
         
         train, test = load_isolet()
-        eval_on_dataset('%d_isolet.json' % i, train, test, [10, 25, 40, 55, 70, 85], True)
-    '''    
+        print(train.shape, test.shape)        
+        #eval_on_dataset('%d_isolet.json' % i, train, test, [10, 25, 40, 55, 70, 85], True)
+        
+    
 if __name__ == '__main__':
     main()

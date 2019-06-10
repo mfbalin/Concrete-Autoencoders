@@ -31,15 +31,15 @@ def main():
     train, val, test = load_GEO()
     
     sz = 9000
-    '''
+    
     for i in range(3):
         probabilities = run_experiment('%d_GEO_linear' % i, train, val, test, 943, [], 5000, 256, 0.0003, 0.1)
         indices = np.argmax(probabilities, axis = 1)
         print(indices)
-        for hidden_units in ([], [sz], [sz, sz], [sz, sz, sz]):
-            test_GEO('%d_GEO_%d_hidden_layers' % (i, len(hidden_units)), indices, hidden_units)
-    '''
+        #for hidden_units in ([], [sz], [sz, sz], [sz, sz, sz]):
+        #    test_GEO('%d_GEO_%d_hidden_layers' % (i, len(hidden_units)), indices, hidden_units)
     
+    '''
     for j, i in enumerate([900, 850, 800, 750, 700, 650, 600]):
         if j < 2 or j % 2 == 0:
             continue
@@ -47,6 +47,6 @@ def main():
         indices = np.argmax(probabilities, axis = 1)
         print(indices)
         test_GEO('%d_GEO_%d_genes_selected' % (j, i), indices, [])
-    
+    '''
 if __name__ == '__main__':
     main()
