@@ -65,7 +65,9 @@ class ConcreteAutoencoderFeatureSelector():
         self.min_temp = min_temp
         self.tryout_limit = tryout_limit
         
-    def fit(self, X, Y, val_X = None, val_Y = None):
+    def fit(self, X, Y = None, val_X = None, val_Y = None):
+        if Y is None:
+            Y = X
         assert len(X) == len(Y)
         validation_data = None
         if val_X is not None and val_Y is not None:
