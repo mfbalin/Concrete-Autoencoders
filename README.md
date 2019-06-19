@@ -1,6 +1,17 @@
-# Concrete-Autoencoders
+# Concrete Autoencoders
 
-An implementation of the ideas in https://arxiv.org/abs/1901.09346.
+The concrete autoencoder is an end-to-end differentiable method for global feature selection, which efficiently identifies a subset of the most informative features and simultaneously learns a neural network to reconstruct the input data from the selected features. The method is unsupervised, and is an adaptation of the standard autoencoder.
+
+For more details, see the accompanying paper: ["Concrete Autoencoders for Differentiable Feature Selection and Reconstruction"](https://arxiv.org/abs/1901.09346), *ICML 2019*, and please use the citation below.
+
+```
+@article{abid2019concrete,
+  title={Concrete Autoencoders for Differentiable Feature Selection and Reconstruction},
+  author={Abid, Abubakar and Balin, Muhammad Fatih and Zou, James},
+  journal={arXiv preprint arXiv:1901.09346},
+  year={2019}
+}
+```
 
 ## Installation
 
