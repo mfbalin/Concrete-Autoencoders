@@ -1,6 +1,6 @@
 # Concrete Autoencoders
 
-The concrete autoencoder is an end-to-end differentiable method for global feature selection, which efficiently identifies a subset of the most informative features and simultaneously learns a neural network to reconstruct the input data from the selected features. The method is unsupervised, and is an adaptation of the standard autoencoder.
+The concrete autoencoder is an end-to-end differentiable method for global feature selection, which efficiently identifies a subset of the most informative features and simultaneously learns a neural network to reconstruct the input data from the selected features. The method can be applied to unsupervised and supervised settings, and is a modification of the standard autoencoder.
 
 For more details, see the accompanying paper: ["Concrete Autoencoders for Differentiable Feature Selection and Reconstruction"](https://arxiv.org/abs/1901.09346), *ICML 2019*, and please use the citation below.
 
@@ -36,7 +36,7 @@ y_test = to_categorical(y_test)
 print(x_train.shape, y_train.shape)
 print(x_test.shape, y_test.shape)
 
-def f(x):
+def decoder(x):
     x = Dense(320)(x)
     x = LeakyReLU(0.2)(x)
     x = Dropout(0.1)(x)
@@ -46,7 +46,7 @@ def f(x):
     x = Dense(784)(x)
     return x
 
-selector = ConcreteAutoencoderFeatureSelector(K = 20, output_function = f, num_epochs = 800)
+selector = ConcreteAutoencoderFeatureSelector(K = 20, output_function = decoder, num_epochs = 800)
 
 selector.fit(x_train, x_train, x_test, x_test)
 ```
