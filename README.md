@@ -1,18 +1,53 @@
 # Concrete-Autoencoders
 
-To install, use `pip install concrete-autoencoder`
-
-To see how to use concrete autoencoders, you can take a look at this colab notebook:
-https://colab.research.google.com/drive/11NMLrmToq4bo6WQ_4WX5G4uIjBHyrzXd
-
 An implementation of the ideas in https://arxiv.org/abs/1901.09346.
 
-Description:
+## Installation
 
-Concrete Autoencoders is a kind of an autoencoder, which does feature selection when you train it.
+To install, use `pip install concrete-autoencoder`
 
-Documentation:
+## Usage
 
+Here's an example of using Concrete Autoencoders to select the 20 most important features (pixels) across the entire MNIST dataset:
+
+```python
+from concrete_autoencoder import ConcreteAutoencoderFeatureSelector
+from keras.datasets import mnist
+from keras.utils import to_categorical
+from keras.layers import Dense, Dropout, LeakyReLU
+import numpy as np
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train = np.reshape(x_train, (len(x_train), -1))
+x_test = np.reshape(x_test, (len(x_test), -1))
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
+print(x_train.shape, y_train.shape)
+print(x_test.shape, y_test.shape)
+
+def f(x):
+    x = Dense(320)(x)
+    x = LeakyReLU(0.2)(x)
+    x = Dropout(0.1)(x)
+    x = Dense(320)(x)
+    x = LeakyReLU(0.2)(x)
+    x = Dropout(0.1)(x)
+    x = Dense(784)(x)
+    return x
+
+selector = ConcreteAutoencoderFeatureSelector(K = 20, output_function = f, num_epochs = 800)
+
+selector.fit(x_train, x_train, x_test, x_test)
+```
+
+Then, to get the pixels, run this:
+```python
+selector.get_support(indices = True)
+```
+
+Run this code inside a colab notebook: https://colab.research.google.com/drive/11NMLrmToq4bo6WQ_4WX5G4uIjBHyrzXd
+
+## Documentation:
 
 class ConcreteAutoencoderFeatureSelector:
 
