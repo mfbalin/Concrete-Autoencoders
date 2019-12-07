@@ -7,7 +7,7 @@ For more details, see the accompanying paper: ["Concrete Autoencoders for Differ
 ```
 @article{abid2019concrete,
   title={Concrete Autoencoders for Differentiable Feature Selection and Reconstruction},
-  author={Abid, Abubakar and Balin, Muhammad Fatih and Zou, James},
+  author={Abid, Abubakar and Balin, Muhammed Fatih and Zou, James},
   journal={arXiv preprint arXiv:1901.09346},
   year={2019}
 }
