@@ -4,7 +4,7 @@ from tensorflow.keras import Model
 from tensorflow.keras.layers import Layer, Softmax, Input
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.initializers import Constant, glorot_normal
-from tensorflow.keras.keras.optimizers import Adam
+from tensorflow.keras.optimizers import Adam
 
 class ConcreteSelect(Layer):
     
